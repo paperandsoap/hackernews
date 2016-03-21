@@ -1,8 +1,10 @@
-- connection: bigquery_publicdata
+- connection: lookerdata_publicdata
 
 - include: "*.view.lookml"
+- case_sensitive: false          # added by Tig to make filters case-insensitive
+- persist_for: 10000 hours
 
-- explore: stories
+- explore: stories 
   joins:
   - join: daily_rank
     view_label: Stories
